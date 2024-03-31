@@ -15,10 +15,30 @@ lvim.plugins = {
   -- dart 相关
   { "dart-lang/dart-vim-plugin" },
   { "thosakwe/vim-flutter" },
+
+  -- 快捷跳转
+  {
+    "phaazon/hop.nvim",
+    event = "BufRead",
+    config = function()
+      require("hop").setup()
+      vim.api.nvim_set_keymap("n", "s", ":HopChar2<cr>", { silent = true })
+      vim.api.nvim_set_keymap("n", "S", ":HopWord<cr>", { silent = true })
+    end
+  },
+  -- 括号包含
+  {
+    "tpope/vim-surround",
+
+    -- make sure to change the value of `timeoutlen` if it's not triggering correctly, see https://github.com/tpope/vim-surround/issues/117
+    -- setup = function()
+    --  vim.o.timeoutlen = 500
+    -- end
+  },
 }
 lvim.colorscheme = "oxocarbon"
 lvim.transparent_window = false
-lvim.format_on_save.enabled = false
+lvim.format_on_save.enabled = true
 
 -- 键位映射
 lvim.lsp.buffer_mappings.normal_mode['gh'] = { vim.lsp.buf.hover, "Show documentation" }
