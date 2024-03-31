@@ -5,20 +5,18 @@ vim.opt.wrap = true
 vim.opt.tabstop = 2
 vim.opt.cursorline = true   -- 高亮当前行
 vim.opt.cursorcolumn = true -- 高亮当前列
+vim.opt.background = 'dark' -- 背景色，可选 light/dark，部分主题同时支持深浅色
 
 lvim.plugins = {
-  -- 主题
-  {
-    "folke/tokyonight.nvim",
-    lazy = false,
-    priority = 1000,
-    opts = {},
-  },
+  -- 主题 https://vimcolorschemes.com/light/top/
+  { "folke/tokyonight.nvim" },
+  { "nyoom-engineering/oxocarbon.nvim" },
+
   -- dart 相关
   { "dart-lang/dart-vim-plugin" },
   { "thosakwe/vim-flutter" },
 }
-lvim.colorscheme = "tokyonight-storm"
+lvim.colorscheme = "oxocarbon"
 lvim.transparent_window = false
 lvim.format_on_save.enabled = false
 
