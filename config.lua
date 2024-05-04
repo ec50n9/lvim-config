@@ -22,8 +22,8 @@ lvim.plugins = {
     event = "BufRead",
     config = function()
       require("hop").setup()
-      vim.api.nvim_set_keymap("n", "s", ":HopChar2<cr>", { silent = true })
-      vim.api.nvim_set_keymap("n", "S", ":HopWord<cr>", { silent = true })
+      vim.api.nvim_set_keymap("n", "<leader>s", ":HopChar2<cr>", { silent = true })
+      vim.api.nvim_set_keymap("n", "<leader>S", ":HopWord<cr>", { silent = true })
     end
   },
   -- 括号包含
@@ -34,10 +34,14 @@ lvim.plugins = {
     -- setup = function()
     --  vim.o.timeoutlen = 500
     -- end
-  },
+  }
 }
+
+-- 主题相关
 lvim.colorscheme = "oxocarbon"
 lvim.transparent_window = false
+
+-- 自动保存
 lvim.format_on_save.enabled = true
 
 -- 键位映射
