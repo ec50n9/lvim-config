@@ -8,14 +8,24 @@ vim.opt.cursorline = true   -- 高亮当前行
 vim.opt.cursorcolumn = true -- 高亮当前列
 vim.opt.background = 'dark' -- 背景色，可选 light/dark，部分主题同时支持深浅色
 
+-- 主题相关
+lvim.colorscheme = "gruvbox"
+lvim.transparent_window = false
+
+-- 自动保存
+lvim.format_on_save.enabled = false
+
+-- 键位映射
+lvim.lsp.buffer_mappings.normal_mode['gh'] = { vim.lsp.buf.hover, "Show documentation" }
+lvim.keys.normal_mode['<S-h>'] = ":bprevious<CR>"
+lvim.keys.normal_mode['<S-l>'] = ":bnext<CR>"
+lvim.keys.normal_mode['<S-x>'] = ":BufferKill<CR>"
+
 lvim.plugins = {
   -- 主题 https://vimcolorschemes.com/light/top/
-  {
-    "folke/tokyonight.nvim",
-    lazy = false,
-    priority = 1000,
-  },
+  { "folke/tokyonight.nvim" },
   { "nyoom-engineering/oxocarbon.nvim" },
+  { "morhetz/gruvbox" },
 
   -- dart 相关
   { "dart-lang/dart-vim-plugin" },
@@ -75,18 +85,6 @@ lvim.plugins = {
   }
 }
 
--- 主题相关
-lvim.colorscheme = "tokyonight-storm"
-lvim.transparent_window = false
-
--- 自动保存
-lvim.format_on_save.enabled = false
-
--- 键位映射
-lvim.lsp.buffer_mappings.normal_mode['gh'] = { vim.lsp.buf.hover, "Show documentation" }
-lvim.keys.normal_mode['<S-h>'] = ":bprevious<CR>"
-lvim.keys.normal_mode['<S-l>'] = ":bnext<CR>"
-lvim.keys.normal_mode['<S-x>'] = ":BufferKill<CR>"
 
 -- volar 中开启 tsserver
 local lspconfig = require("lspconfig")
