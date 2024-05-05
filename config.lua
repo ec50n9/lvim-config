@@ -21,6 +21,10 @@ lvim.keys.normal_mode['<S-h>'] = ":bprevious<CR>"
 lvim.keys.normal_mode['<S-l>'] = ":bnext<CR>"
 lvim.keys.normal_mode['<S-x>'] = ":BufferKill<CR>"
 
+-- 状态栏
+lvim.builtin.lualine.style = "lvim"
+
+-- 插件
 lvim.plugins = {
   -- 主题 https://vimcolorschemes.com/light/top/
   { "folke/tokyonight.nvim" },
