@@ -10,7 +10,11 @@ vim.opt.background = 'dark' -- 背景色，可选 light/dark，部分主题同�
 
 lvim.plugins = {
   -- 主题 https://vimcolorschemes.com/light/top/
-  { "folke/tokyonight.nvim" },
+  {
+    "folke/tokyonight.nvim",
+    lazy = false,
+    priority = 1000,
+  },
   { "nyoom-engineering/oxocarbon.nvim" },
 
   -- dart 相关
@@ -72,11 +76,11 @@ lvim.plugins = {
 }
 
 -- 主题相关
-lvim.colorscheme = "oxocarbon"
+lvim.colorscheme = "tokyonight-storm"
 lvim.transparent_window = false
 
 -- 自动保存
-lvim.format_on_save.enabled = true
+lvim.format_on_save.enabled = false
 
 -- 键位映射
 lvim.lsp.buffer_mappings.normal_mode['gh'] = { vim.lsp.buf.hover, "Show documentation" }
