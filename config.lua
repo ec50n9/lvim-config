@@ -1,4 +1,5 @@
 -- 自定义配置
+lvim.leader = "space"
 vim.api.nvim_set_keymap('i', 'jk', '<Esc>', { noremap = true })
 vim.opt.relativenumber = true
 vim.opt.wrap = true
@@ -21,9 +22,42 @@ lvim.plugins = {
     "phaazon/hop.nvim",
     event = "BufRead",
     config = function()
-      require("hop").setup()
-      vim.api.nvim_set_keymap("n", "<leader>s", ":HopChar2<cr>", { silent = true })
-      vim.api.nvim_set_keymap("n", "<leader>S", ":HopWord<cr>", { silent = true })
+      local hop = require('hop')
+      hop.setup {}
+
+      local directions = require('hop.hint').HintDirection
+
+      -- 行内后跳
+      vim.keymap.set('', 'f', function()
+        hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true })
+      end, { remap = true })
+
+      -- 行内前跳
+      vim.keymap.set('', 'F', function()
+        hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true })
+      end, { remap = true })
+
+      -- 后跳词首
+      vim.keymap.set('', '<leader><leader>w', function()
+        hop.hint_words({ direction = directions.AFTER_CURSOR })
+      end, { remap = true })
+
+      -- 前跳词首
+      vim.keymap.set('', '<leader><leader>b', function()
+        hop.hint_words({ direction = directions.BEFORE_CURSOR })
+      end, { remap = true })
+
+      -- 后跳词尾
+      vim.keymap.set('', '<leader><leader>e', function()
+        hop.hint_words({ direction = directions.AFTER_CURSOR })
+        vim.api.nvim_feedkeys('e', 'n', false)
+      end, { remap = true })
+
+      -- 前跳词尾
+      vim.keymap.set('', '<leader><leader>ge', function()
+        hop.hint_words({ direction = directions.BEFORE_CURSOR })
+        vim.api.nvim_feedkeys('e', 'n', false)
+      end, { remap = true })
     end
   },
   -- 括号包含
