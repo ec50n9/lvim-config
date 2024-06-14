@@ -9,7 +9,7 @@ vim.opt.cursorcolumn = true -- 高亮当前列
 vim.opt.background = 'dark' -- 背景色，可选 light/dark，部分主题同时支持深浅色
 
 -- 主题相关
-lvim.colorscheme = "gruvbox"
+lvim.colorscheme = "tokyonight-storm"
 lvim.transparent_window = false
 
 -- 自动保存
@@ -91,21 +91,25 @@ lvim.plugins = {
 
 
 -- volar 中开启 tsserver
-local lspconfig = require("lspconfig")
+local lspconfig = require "lspconfig"
+lspconfig.volar.setup({
+  filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'vue', 'json' },
+  init_options = {
+    typescript = {
+      tsdk = '/home/e9/.local/share/pnpm/global/5/node_modules/typescript/lib',
+    },
+  }
+})
 lspconfig.tsserver.setup({
+  filetypes = { "javascript", "typescript", "vue" },
   init_options = {
     plugins = {
       {
         name = "@vue/typescript-plugin",
-        location = "/home/ec50n9/.local/share/pnpm/global/5/node_modules/@vue/typescript-plugin",
+        location = "/home/e9/.local/share/pnpm/global/5/node_modules/@vue/typescript-plugin",
         languages = { "javascript", "typescript", "vue" },
       },
     }
-  },
-  filetypes = {
-    "javascript",
-    "typescript",
-    "vue",
   }
 })
 
